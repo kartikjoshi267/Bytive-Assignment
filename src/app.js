@@ -21,11 +21,11 @@ app.use(cors());
 
 connectToDatabase();
 
-// app.get("/", (req, res) => {
-//     res.send("Hello World!");
-// });
+app.get("/", (req, res) => {
+    res.redirect("/api-docs");
+});
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {
     customSiteTitle: 'Documentation',
     customCss: '.swagger-ui .topbar { display: none }'
 }));
