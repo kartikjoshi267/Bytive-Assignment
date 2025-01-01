@@ -1,7 +1,7 @@
-import { STATUS_CODES } from "../../constants/index.js";
-import CustomError from "./custom-error.js";
+const { STATUS_CODES } = require("../../constants/index.js");
+const CustomError = require("./custom-error.js");
 
-export default class BadRequestError extends CustomError {
+module.exports = class BadRequestError extends CustomError {
   constructor(message) {
     super(message, STATUS_CODES.BAD_REQUEST);
   }

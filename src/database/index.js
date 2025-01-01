@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
-import { STATUS_CODES } from "../constants/index.js";
-import CustomError from "../utils/error/custom-error.js";
-import logger from "../utils/logger.js";
+const mongoose = require("mongoose");
+const { STATUS_CODES } = require("../constants/index.js");
+const CustomError = require("../utils/error/custom-error.js");
+const logger = require("../utils/logger.js");
 
 const connectToDatabase = async () => {
     try {
@@ -17,4 +17,4 @@ const connectToDatabase = async () => {
     }
 };
 
-export default connectToDatabase;
+module.exports = connectToDatabase;

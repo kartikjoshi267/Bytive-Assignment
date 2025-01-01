@@ -1,6 +1,6 @@
-import { STATUS_CODES } from "../constants/index.js";
+const { STATUS_CODES } = require("../constants/index.js");
 
-export default class ApiResponseBuilder {
+module.exports = class ApiResponseBuilder {
     #statusCode = STATUS_CODES.OK;
     #message;
     #data;

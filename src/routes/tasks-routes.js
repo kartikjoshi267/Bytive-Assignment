@@ -1,12 +1,12 @@
-import { Router } from "express";
-import BadRequestError from "../utils/error/bad-request-error.js";
-import Task from "../models/tasks-model.js";
-import User from "../models/user-model.js";
-import ApiResponseBuilder from "../utils/api-response-builder.js";
-import authMiddleware from "../middleware/auth-middleware.js";
-import UnauthorizedError from "../utils/error/unauthorized-error.js";
-import CustomError from "../utils/error/custom-error.js";
-import { STATUS_CODES } from "../constants/index.js";
+const { Router } = require("express");
+const BadRequestError = require("../utils/error/bad-request-error.js");
+const Task = require("../models/tasks-model.js");
+const User = require("../models/user-model.js");
+const ApiResponseBuilder = require("../utils/api-response-builder.js");
+const authMiddleware = require("../middleware/auth-middleware.js");
+const UnauthorizedError = require("../utils/error/unauthorized-error.js");
+const CustomError = require("../utils/error/custom-error.js");
+const { STATUS_CODES } = require("../constants/index.js");
 
 const router = Router();
 
@@ -133,4 +133,4 @@ router.delete("/:id", authMiddleware, async (req, res) => {
     );
 });
 
-export default router;
+module.exports = router;

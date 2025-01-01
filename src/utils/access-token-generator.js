@@ -1,5 +1,5 @@
-import jwt from "jsonwebtoken";
-import CustomError from "./error/custom-error.js";
+const jwt = require("jsonwebtoken");
+const CustomError = require("./error/custom-error.js");
 
 const generateAccessToken = (userId) => {
     return new Promise((resolve, reject) => {
@@ -19,4 +19,4 @@ const generateAccessToken = (userId) => {
     });
 };
 
-export default generateAccessToken;
+module.exports = generateAccessToken;

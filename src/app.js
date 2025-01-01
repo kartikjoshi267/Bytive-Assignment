@@ -1,18 +1,17 @@
-import "express-async-errors";
-import express from "express";
-import dotenv from "dotenv";
-import cors from "cors";
-import process from "process";
+// import "express-async-errors";
+const express = require("express");
+require("express-async-errors");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const process = require("process");
 
 const PORT = process.env.PORT || 3000;
 
-import userRoutes from "./routes/user-routes.js";
-import tasksRoutes from "./routes/tasks-routes.js";
-import logger from "./utils/logger.js";
-import connectToDatabase from "./database/index.js";
-import NotFoundError from "./utils/error/bad-request-error.js";
-import CustomError from "./utils/error/custom-error.js";
-import { STATUS_CODES } from "./constants/index.js";
+const logger = require("./utils/logger.js");
+const connectToDatabase = require("./database/index.js");
+const NotFoundError = require("./utils/error/not-found-error.js");
+const CustomError = require("./utils/error/custom-error.js");
+const { STATUS_CODES } = require("./constants/index.js");
 
 dotenv.config();
 
@@ -26,8 +25,8 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
-app.use("/users", userRoutes);
-app.use("/tasks", tasksRoutes);
+app.use("/users", require("./routes/user-routes.js"));
+app.use("/tasks", require("./routes/tasks-routes.js"));
 
 app.use("*", (req, res) => {
     throw new NotFoundError("Route not found");
@@ -65,5 +64,3 @@ app.listen(PORT, (error) => {
     }
     logger.info(`Server running on port ${PORT}`);
 });
-
-export default app;

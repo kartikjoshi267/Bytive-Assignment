@@ -1,11 +1,14 @@
-import { Router } from "express";
-import bcrypt from "bcryptjs";
-import BadRequestError from "../utils/error/bad-request-error.js";
-import User from "../models/user-model.js";
-import ApiResponseBuilder from "../utils/api-response-builder.js";
-import generateAccessToken from "../utils/access-token-generator.js";
-import authMiddleware from "../middleware/auth-middleware.js";
-import { eraseCookie, setCookie } from "../utils/cookies.js";
+const { Router } = require("express");
+const bcrypt = require("bcryptjs");
+const BadRequestError = require("../utils/error/bad-request-error.js");
+const User = require("../models/user-model.js");
+const ApiResponseBuilder = require("../utils/api-response-builder.js");
+const generateAccessToken = require("../utils/access-token-generator.js");
+const authMiddleware = require("../middleware/auth-middleware.js");
+const {
+    eraseCookie,
+    setCookie,
+} = require("../utils/cookies.js");
 
 const router = Router();
 
@@ -77,4 +80,4 @@ router.post("/logout", async (req, res) => {
     );
 });
 
-export default router;
+module.exports = router;

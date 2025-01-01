@@ -1,7 +1,7 @@
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
-import { getCookie } from "../utils/cookies.js"
-import UnauthorizedError from "../utils/error/unauthorized-error.js";
+const { getCookie } = require("../utils/cookies.js");
+const UnauthorizedError = require("../utils/error/unauthorized-error.js");
 
 const authMiddleware = (req, res, next) => {
   const token = getCookie(req, "token");
@@ -19,4 +19,4 @@ const authMiddleware = (req, res, next) => {
   })
 }
 
-export default authMiddleware
+module.exports = authMiddleware

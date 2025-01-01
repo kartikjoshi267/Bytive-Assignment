@@ -1,4 +1,4 @@
-import winston from "winston";
+const winston = require("winston");
 
 const dateFormat = () => {
     return new Date(Date.now()).toUTCString();
@@ -51,4 +51,4 @@ class LoggerService {
 }
 
 const logger = new LoggerService();
-export default logger;
+module.exports = logger;

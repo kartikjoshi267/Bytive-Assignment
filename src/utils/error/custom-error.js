@@ -1,6 +1,6 @@
-import { STATUS_CODES } from "../../constants/index.js";
+const { STATUS_CODES } = require("../../constants/index.js");
 
-export default class CustomError extends Error {
+module.exports = class CustomError extends Error {
   statusCode = STATUS_CODES.INTERNAL_SERVER_ERROR;
   error = "Internal Server Error";
 
