@@ -5,9 +5,6 @@ const dateFormat = () => {
 };
 
 class LoggerService {
-    log_data;
-    logger;
-
     constructor() {
         this.log_data = null;
         const logger = winston.createLogger({
