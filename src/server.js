@@ -24,4 +24,6 @@ app.listen(PORT, (error) => {
     logger.info(`Server running on port ${PORT}`);
 });
 
-export default app;
+export default (req, res) => {
+    app(req, res);
+};
