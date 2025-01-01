@@ -3,8 +3,8 @@ require("express-async-errors");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const process = require("process");
-
-const PORT = process.env.PORT || 3000;
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.js');
 
 const logger = require("./utils/logger.js");
 const connectToDatabase = require("./database/index.js");
@@ -14,15 +14,21 @@ const { STATUS_CODES } = require("./constants/index.js");
 
 dotenv.config();
 
+const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 connectToDatabase();
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-});
+// app.get("/", (req, res) => {
+//     res.send("Hello World!");
+// });
+
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {
+    customSiteTitle: 'Documentation',
+    customCss: '.swagger-ui .topbar { display: none }'
+}));
 
 app.use("/users", require("./routes/user-routes.js"));
 app.use("/tasks", require("./routes/tasks-routes.js"));
